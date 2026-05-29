@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plainly Put — Any document, plainly put.</title>
+  <meta name="description" content="Make sense of the documents that matter. Plain-English explanations of leases, medical bills, IRS letters, NDAs, and more.">
+  <meta property="og:title" content="Plainly Put — Any document, plainly put.">
+  <meta property="og:description" content="Make sense of the documents that matter. The paperwork that affects your money, your rights, and your decisions — explained in seconds.">
+  <meta property="og:type" content="website">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --teal: #1A4D5C;
+      --coral: #F08C7A;
+      --ink: #0F1F26;
+      --slate: #5A6670;
+      --cream: #FAF7F2;
+      --amber: #D4843A;
+      --sage: #2E8A6E;
+      --border: #e8e2d6;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+      background: var(--teal);
+      color: var(--cream);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    /* Header */
+    .header { padding: 40px 0 32px; background: var(--teal); }
+    .wordmark {
+      font-size: 36px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+    .header .tagline {
+      font-size: 15px;
+      color: white;
+      opacity: 0.78;
+      font-style: italic;
+      margin-top: 6px;
+    }
+    /* Hero */
+    .hero { padding: 60px 0 100px; }
+    .hero h1 {
+      font-size: clamp(36px, 5.5vw, 64px);
+      font-weight: 700;
+      color: white;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 28px;
+      max-width: 900px;
+    }
+    .hero .subhead {
+      font-size: clamp(17px, 1.8vw, 20px);
+      color: white;
+      max-width: 720px;
+      margin-bottom: 36px;
+      line-height: 1.55;
+    }
+    .cta {
+      display: inline-block;
+      background: var(--coral);
+      color: white;
+      font-weight: 600;
+      padding: 16px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 16px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 2px 8px rgba(240, 140, 122, 0.3);
+    }
+    .cta:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(240, 140, 122, 0.4); }
+
+    /* Demo */
+    .demo {
+      padding: 80px 0;
+      background: white;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .section-h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      color: var(--slate);
+      margin-bottom: 14px;
+      text-align: center;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .section-lead {
+      text-align: center;
+      color: var(--slate);
+      margin-bottom: 56px;
+      font-size: 17px;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .section-h22 {
+      font-size: clamp(28px, 4vw, 42px);
+      color: white;
+      margin-bottom: 14px;
+      text-align: center;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .section-lead2 {
+      text-align: center;
+      color: white;
+      margin-bottom: 56px;
+      font-size: 17px;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .demo-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    @media (min-width: 860px) {
+      .demo-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .demo-card {
+      background: white;
+      border-radius: 12px;
+      padding: 32px;
+      border: 1px solid var(--coral);
+    }
+    .demo-card.doc {
+      font-family: 'Courier New', ui-monospace, monospace;
+      font-size: 13.5px;
+      color: var(--ink);
+      line-height: 1.7;
+    }
+    .demo-card.plainly {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 13.5px;
+      color: var(--ink);
+      line-height: 1.7;
+    }
+    .plainly-lead {
+      color: var(--coral);
+      font-weight: 600;
+      font-style: normal;
+    }
+    .demo-card h3 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--coral);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+    .demo-card ul {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 12px;
+    }
+    .demo-card ul li {
+      padding-left: 18px;
+      position: relative;
+      margin-bottom: 8px;
+    }
+    .demo-card ul li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--coral);
+      font-weight: bold;
+    }
+    .demo-card .want-to-walk {
+      margin-top: 16px;
+      font-weight: 600;
+    }
+    .follow-up {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--slate);
+      font-style: italic;
+      color: var(--slate);
+      font-size: 14px;
+    }
+
+    /* Promises */
+    .promises { padding: 80px 0; }
+    .promises-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-bottom: 56px;
+    }
+    @media (min-width: 768px) {
+      .promises-cards { grid-template-columns: 1fr 1fr; }
+    }
+    .promise-card {
+      background: white;
+      border-radius: 12px;
+      padding: 32px;
+      border: 1px solid var(--border);
+    }
+    .promise-card h3 {
+      font-size: 22px;
+      color: var(--coral);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    .promise-card p {
+      color: var(--slate);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    .proof-points {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+    @media (min-width: 768px) {
+      .proof-points { grid-template-columns: repeat(3, 1fr); }
+    }
+    .proof-point { text-align: center; }
+    .proof-point .icon {
+      margin-bottom: 12px;
+    }
+    .icon-inline {
+      vertical-align: middle;
+      margin-right: 6px;
+      position: relative;
+      top: -2px;
+    }
+    .proof-point h4 {
+      font-size: 16px;
+      color: var(--cream);
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+    .proof-point p {
+      font-size: 14px;
+      color: white;
+      line-height: 1.5;
+    }
+
+    /* Capture */
+    .capture {
+      padding: 80px 0;
+      background: var(--teal);
+      color: var(--teal);
+      text-align: center;
+    }
+    .capture h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      margin-bottom: 14px;
+      color: white;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .capture p {
+      opacity: 0.88;
+      margin-bottom: 36px;
+      font-size: 17px;
+      color: white;
+    }
+    .capture-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    @media (min-width: 600px) {
+      .capture-form { flex-direction: row; }
+    }
+    .form-error {
+      color: var(--coral);
+      margin-top: 12px;
+      font-size: 15px;
+      display: none;
+      font-weight: 500;
+    }
+    .capture-form input {
+      flex: 1;
+      padding: 16px 18px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+      font-family: inherit;
+    }
+    .capture-form input:focus { outline: 2px solid var(--coral); }
+    .capture-form button {
+      background: var(--coral);
+      color: white;
+      border: none;
+      padding: 16px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: transform 0.15s ease;
+    }
+    .capture-form button:hover { transform: translateY(-1px); }
+    .capture-fine {
+      margin-top: 20px;
+      font-size: 14px;
+      opacity: 0.7;
+      font-style: italic;
+      color: white;
+    }
+    .thanks-message {
+      display: none;
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 24px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 8px;
+      font-size: 17px;
+      color: white;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 48px 0;
+      background: var(--ink);
+      color: white;
+    }
+    .footer-row { margin-bottom: 14px; }
+    .footer-row.brand { font-weight: 700; color: white; font-size: 17px; }
+    .footer-row.brand .ftag {
+      font-weight: 400;
+      color: white;
+      opacity: 0.7;
+      font-style: italic;
+      margin-left: 6px;
+    }
+    .footer-row a {
+      color: white;
+      opacity: 0.7;
+      text-decoration: none;
+      margin-right: 8px;
+    }
+    .footer-row a:hover { opacity: 1; }
+    .footer-row.disclaimer {
+      font-size: 13px;
+      opacity: 0.6;
+      font-style: italic;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid white;
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <div class="wordmark">Plainly Put</div>
+    <div class="tagline">Any document, plainly put.</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>Make sense of the <br>Documents That Matter.</h1>
+    <p class="subhead">The paperwork that affects your money, your rights, and your decisions — explained in seconds. Your lease. Your medical bill. That IRS letter. An NDA before you sign. Snap a photo, get a plain-English breakdown, and ask any question. Like having a lawyer, doctor, and accountant on speed-dial.</p>
+    <a href="#waitlist" class="cta">Get early access →</a>
+  </div>
+</section>
+
+<section class="demo">
+  <div class="container">
+    <h2 class="section-h2">Here is what we will do for you.</h2>
+    <p class="section-lead">Upload anything that's confusing you. <br>We'll explain it like a friend who happens to know what they're talking about.</p>
+
+    <div class="demo-grid">
+      <div class="demo-card doc">
+      <div class="section-lead">WHAT IS SHARED WITH YOU</div>
+        <strong>NOTICE OF DATA SECURITY INCIDENT</strong><br><br>
+        Dear Valued Customer,<br><br>
+        [Company Name] is writing to inform you of a data security incident that may have involved your personal information. On February 18, 2026, we discovered that an unauthorized third party gained access to certain systems between January 4, 2026 and February 11, 2026.<br><br>
+        The information that may have been involved includes your name, email address, date of birth, and the last four digits of your Social Security number. We have no evidence that this information has been misused.<br><br>
+        As a precaution, we are offering 12 months of complimentary credit monitoring through Experian. To enroll, visit experian.com/protect and use activation code XX-XX-XXXX by May 30, 2026.
+      </div>
+
+      <div class="demo-card plainly">
+      <div class="section-lead">WHAT YOU NEED TO KNOW</div>
+        <p><span class="plainly-lead">PLAINLY PUT:</span> Your name, email, date of birth, and the last 4 digits of your Social Security number were exposed in a data breach.</p>
+
+        <h3>What happened</h3>
+        <ul>
+          <li>The company contacting you is [Company Name]</li>
+          <li>Hackers had access between January 4 and February 11, 2026</li>
+          <li>You're being offered 12 months of free credit monitoring through Experian</li>
+        </ul>
+
+        <h3>Your options</h3>
+        <ul>
+          <li><strong>Enroll in the free credit monitoring</strong> — covers you for 12 months, then ends</li>
+          <li><strong>Freeze your credit instead</strong> — free at all three bureaus, no expiration, stronger protection. Most experts recommend this when a breach exposes Social Security information.</li>
+        </ul>
+
+        <p class="want-to-walk">Want me to walk you through freezing your credit?</p>
+        <div class="follow-up">↳ "Yes, walk me through it." → "Here's how to do it at each bureau..."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="promises">
+  <div class="container">
+    <h2 class="section-h22">Your data is yours. Full stop.</h2>
+    <p class="section-lead2">No fine print on this page. Here is exactly what we will and won't do.</p>
+
+    <div class="promises-cards">
+      <div class="promise-card">
+        <h3><svg class="icon-inline" width="33" height="33" viewBox="0 0 24 24" fill="none" stroke="#1A4D5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> It is your data.</h3>
+        <p>You own every document you upload. We never sell it, never share it, and never train AI on it. Delete everything in one click — no support email required.</p>
+      </div>
+
+      <div class="promise-card">
+        <h3><svg class="icon-inline" width="33" height="33" viewBox="0 0 24 24" fill="none" stroke="#1A4D5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> We only use your data to benefit you.</h3>
+        <p>We remember what we've explained so the next time gets sharper. We notice patterns across your own documents to spot what changed.</p>
+      </div>
+    </div>
+
+    <div class="proof-points">
+      <div class="proof-point">
+        <div class="icon"><svg width="43" height="43" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <h4>No-training mode</h4>
+        <p>Our AI providers are set to "do not train on user data." Named in our privacy policy.</p>
+      </div>
+      <div class="proof-point">
+        <div class="icon"><svg width="43" height="43" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></div>
+        <h4>One-click full delete</h4>
+        <p>Visible in your account settings. Cascades through everything — files, conversations, embeddings.</p>
+      </div>
+      <div class="proof-point">
+        <div class="icon"><svg width="43" height="43" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h4>90-day default retention</h4>
+        <p>Raw uploads auto-delete after 90 days unless you pin them. Your call, not ours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="capture" id="waitlist">
+  <div class="container">
+    <h2>Get early access.</h2>
+    <p>We're inviting the first hundred users soon. Drop your email or phone number and we'll let you know when it's your turn.</p>
+
+    <form class="capture-form" id="waitlist-form">
+      <input type="text" name="contact" placeholder="your email or phone number" aria-label="Email or phone number">
+      <button type="submit">Add me</button>
+    </form>
+
+    <div class="form-error" id="form-error">Please enter your email or phone number.</div>
+
+    <div class="thanks-message" id="thanks-message">
+      Thanks! We'll be in touch when Plainly Put is ready.
+    </div>
+
+    <div class="capture-fine">One message when we launch. No spam. No marketing blasts. Just the one.</div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-row brand">
+      Plainly Put<span class="ftag">· Any document, plainly put.</span>
+    </div>
+    <div class="footer-row">
+      <a href="mailto:hello@plainlyput.ai">hello@plainlyput.ai</a> · <a href="#" title="Coming soon">Privacy</a> · <a href="#" title="Coming soon">Terms</a>
+    </div>
+    <div class="footer-row disclaimer">
+      Plainly Put is not legal, medical, or financial advice. We explain documents in plain English; we don't tell you what to do.
+    </div>
+  </div>
+</footer>
+
+<script>
+  var SUPABASE_URL = 'https://rkbkaqaxplqeutwrowhq.supabase.co';
+  var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJrYmthcWF4cGxxZXV0d3Jvd2hxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1MzI5MzIsImV4cCI6MjA5NDEwODkzMn0.w01mmeIxFgnoSs_4bmWj2xf3vV9x7ig83K_j9lnnuRY';
+
+  document.getElementById('waitlist-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    var contact = e.target.contact.value.trim();
+    var errorEl = document.getElementById('form-error');
+    errorEl.style.display = 'none';
+
+    if (!contact) {
+      errorEl.textContent = 'Please enter your email or phone number.';
+      errorEl.style.display = 'block';
+      return;
+    }
+
+    var isEmail = contact.includes('@');
+    var normalizedPhone = null;
+    if (isEmail) {
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(contact)) {
+        errorEl.textContent = 'That does not look like a valid email. Check for typos.';
+        errorEl.style.display = 'block';
+        return;
+      }
+    } else {
+      var hasPlus = contact.trim().startsWith('+');
+      var digits = contact.replace(/[^\d]/g, '');
+
+      if (hasPlus) {
+        // International: starts with +, accept 7-15 digits after country code
+        if (digits.length < 7 || digits.length > 15) {
+          errorEl.textContent = 'That does not look like a valid phone number.';
+          errorEl.style.display = 'block';
+          return;
+        }
+        normalizedPhone = '+' + digits;
+      } else {
+        // Default: US format (10 digits, or 11 starting with 1)
+        if (digits.length === 11 && digits.charAt(0) === '1') {
+          digits = digits.substring(1);
+        }
+        if (digits.length !== 10) {
+          errorEl.textContent = 'Please enter a 10-digit US phone number. For international, start with + and country code.';
+          errorEl.style.display = 'block';
+          return;
+        }
+        normalizedPhone = '+1' + digits;
+      }
+    }
+
+    var email = isEmail ? contact : null;
+    var phone = normalizedPhone;
+
+    var ip = '';
+    try {
+      var ipRes = await fetch('https://api.ipify.org?format=json');
+      var ipData = await ipRes.json();
+      ip = ipData.ip;
+    } catch(err) {}
+
+    try {
+      var response = await fetch(SUPABASE_URL + '/rest/v1/waitlist', {
+        method: 'POST',
+        headers: {
+          'apikey': SUPABASE_KEY,
+          'Authorization': 'Bearer ' + SUPABASE_KEY,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify({
+          email: email,
+          phone: phone,
+          ip_address: ip || null
+        })
+      });
+      if (!response.ok) throw new Error('Submission failed');
+      document.getElementById('waitlist-form').style.display = 'none';
+      document.getElementById('thanks-message').style.display = 'block';
+    } catch(err) {
+      errorEl.textContent = 'Something went wrong saving your info. Please try again.';
+      errorEl.style.display = 'block';
+    }
+  });
+</script>
+
+</body>
+</html>
