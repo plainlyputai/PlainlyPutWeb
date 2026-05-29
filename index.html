@@ -138,7 +138,7 @@
       border: 1px solid var(--coral);
     }
     .demo-card.doc {
-      font-family: 'Courier New', ui-monospace, monospace;
+      font-family: 'Source Serif 4', Georgia, serif;
       font-size: 13.5px;
       color: var(--ink);
       line-height: 1.7;
@@ -493,15 +493,36 @@
   var SUPABASE_URL = 'https://rkbkaqaxplqeutwrowhq.supabase.co';
   var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJrYmthcWF4cGxxZXV0d3Jvd2hxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1MzI5MzIsImV4cCI6MjA5NDEwODkzMn0.w01mmeIxFgnoSs_4bmWj2xf3vV9x7ig83K_j9lnnuRY';
 
-  // Auto-format phone numbers as user types — US default, international when starting with +
+  // Auto-format phone numbers as user types — custom US format (parentheses), libphonenumber for international
   document.querySelector('input[name="contact"]').addEventListener('input', function(e) {
     var value = e.target.value;
     if (value.includes('@') || /[a-zA-Z]/.test(value)) {
       return;
     }
     var isInternational = value.trim().startsWith('+');
-    var formatter = isInternational ? new libphonenumber.AsYouType() : new libphonenumber.AsYouType('US');
-    e.target.value = formatter.input(value);
+
+    if (isInternational) {
+      if (typeof libphonenumber !== 'undefined') {
+        var formatter = new libphonenumber.AsYouType();
+        e.target.value = formatter.input(value);
+      }
+      return;
+    }
+
+    // Custom US format: (415) 555-1234
+    var digits = value.replace(/\D/g, '');
+    if (digits.length > 10) digits = digits.substring(0, 10);
+    var formatted = '';
+    if (digits.length === 0) {
+      formatted = '';
+    } else if (digits.length <= 3) {
+      formatted = '(' + digits;
+    } else if (digits.length <= 6) {
+      formatted = '(' + digits.substring(0, 3) + ') ' + digits.substring(3);
+    } else {
+      formatted = '(' + digits.substring(0, 3) + ') ' + digits.substring(3, 6) + '-' + digits.substring(6);
+    }
+    e.target.value = formatted;
   });
 
   document.getElementById('waitlist-form').addEventListener('submit', async function(e) {
