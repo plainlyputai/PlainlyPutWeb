@@ -123,6 +123,33 @@
       margin-left: auto;
       margin-right: auto;
     }
+    .demo-tabs {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .demo-tab {
+      background: white;
+      color: var(--slate);
+      border: 1px solid var(--border);
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+    .demo-tab:hover { border-color: var(--coral); color: var(--ink); }
+    .demo-tab.active {
+      background: var(--coral);
+      color: white;
+      border-color: var(--coral);
+    }
+    .demo-slide { display: none; }
+    .demo-slide.active { display: block; }
     .demo-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -383,35 +410,172 @@
     <h2 class="section-h2">Here is what we will do for you.</h2>
     <p class="section-lead">Upload anything that's confusing you. <br>We'll explain it like a friend who happens to know what they're talking about.</p>
 
-    <div class="demo-grid">
-      <div class="demo-card doc">
-      <div class="section-lead">WHAT IS SHARED WITH YOU</div>
-        <strong>NOTICE OF DATA SECURITY INCIDENT</strong><br><br>
-        Dear Valued Customer,<br><br>
-        [Company Name] is writing to inform you of a data security incident that may have involved your personal information. On February 18, 2026, we discovered that an unauthorized third party gained access to certain systems between January 4, 2026 and February 11, 2026.<br><br>
-        The information that may have been involved includes your name, email address, date of birth, and the last four digits of your Social Security number. We have no evidence that this information has been misused.<br><br>
-        As a precaution, we are offering 12 months of complimentary credit monitoring through Experian. To enroll, visit experian.com/protect and use activation code XX-XX-XXXX by May 30, 2026.
+    <div class="demo-tabs" role="tablist">
+      <button class="demo-tab active" data-slide="breach" role="tab">Data breach notice</button>
+      <button class="demo-tab" data-slide="bill" role="tab">Medical bill</button>
+      <button class="demo-tab" data-slide="lease" role="tab">Lease clause</button>
+      <button class="demo-tab" data-slide="irs" role="tab">IRS letter</button>
+      <button class="demo-tab" data-slide="nda" role="tab">NDA</button>
+    </div>
+
+    <div class="demo-slide active" data-slide="breach">
+      <div class="demo-grid">
+        <div class="demo-card doc">
+          <div class="section-lead">WHAT IS SHARED WITH YOU</div>
+          <strong>NOTICE OF DATA SECURITY INCIDENT</strong><br><br>
+          Dear Valued Customer,<br><br>
+          [Company Name] is writing to inform you of a data security incident that may have involved your personal information. On February 18, 2026, we discovered that an unauthorized third party gained access to certain systems between January 4, 2026 and February 11, 2026.<br><br>
+          The information that may have been involved includes your name, email address, date of birth, and the last four digits of your Social Security number. We have no evidence that this information has been misused.<br><br>
+          As a precaution, we are offering 12 months of complimentary credit monitoring through Experian. To enroll, visit experian.com/protect and use activation code XX-XX-XXXX by May 30, 2026.
+        </div>
+        <div class="demo-card plainly">
+          <div class="section-lead">WHAT YOU NEED TO KNOW</div>
+          <p><span class="plainly-lead">PLAINLY PUT:</span> Your name, email, date of birth, and the last 4 digits of your Social Security number were exposed in a data breach.</p>
+          <h3>What happened</h3>
+          <ul>
+            <li>The company contacting you is [Company Name]</li>
+            <li>Hackers had access between January 4 and February 11, 2026</li>
+            <li>You're being offered 12 months of free credit monitoring through Experian</li>
+          </ul>
+          <h3>Your options</h3>
+          <ul>
+            <li><strong>Enroll in the free credit monitoring</strong> — covers you for 12 months, then ends</li>
+            <li><strong>Freeze your credit instead</strong> — free at all three bureaus, no expiration, stronger protection. Most experts recommend this when a breach exposes Social Security information.</li>
+          </ul>
+          <p class="want-to-walk">Want me to walk you through freezing your credit?</p>
+          <div class="follow-up">↳ "Yes, walk me through it." → "Here's how to do it at each bureau..."</div>
+        </div>
       </div>
+    </div>
 
-      <div class="demo-card plainly">
-      <div class="section-lead">WHAT YOU NEED TO KNOW</div>
-        <p><span class="plainly-lead">PLAINLY PUT:</span> Your name, email, date of birth, and the last 4 digits of your Social Security number were exposed in a data breach.</p>
+    <div class="demo-slide" data-slide="bill">
+      <div class="demo-grid">
+        <div class="demo-card doc">
+          <div class="section-lead">WHAT IS SHARED WITH YOU</div>
+          <strong>EXPLANATION OF BENEFITS</strong><br><br>
+          Service Date: 03/14/2026<br>
+          Provider: Northside Diagnostic Imaging<br>
+          Procedure: CPT 74181 — MRI Abdomen w/o contrast<br><br>
+          Amount Billed: $3,247.00<br>
+          Plan Discount: −$1,890.00<br>
+          Allowed Amount: $1,357.00<br>
+          Plan Paid: $0.00<br>
+          <strong>Patient Responsibility: $1,357.00</strong><br><br>
+          Reason Code: PR-204 — This service is not covered under the patient's current benefit plan.
+        </div>
+        <div class="demo-card plainly">
+          <div class="section-lead">WHAT YOU NEED TO KNOW</div>
+          <p><span class="plainly-lead">PLAINLY PUT:</span> Your insurer is saying you owe $1,357 for an MRI from March — but they're using a denial code that's commonly disputed.</p>
+          <h3>What happened</h3>
+          <ul>
+            <li>Provider: Northside Diagnostic Imaging (March 14, 2026)</li>
+            <li>Procedure: MRI of the abdomen</li>
+            <li>Billed $3,247 / Insurance paid $0 / Your share: $1,357</li>
+            <li>Denial code: PR-204 ("not covered" — one of the most commonly disputed codes)</li>
+          </ul>
+          <h3>Your options</h3>
+          <ul>
+            <li><strong>Pay the bill</strong> — fastest, but you may be paying for an error</li>
+            <li><strong>Call the insurer to verify pre-authorization and network status</strong> — mistakes here are common</li>
+            <li><strong>Appeal the denial</strong> — strong grounds if the MRI was pre-authorized</li>
+          </ul>
+          <p class="want-to-walk">Want me to walk you through writing an appeal letter?</p>
+          <div class="follow-up">↳ "Yes, draft the appeal." → "Here's the letter, customized to this denial code..."</div>
+        </div>
+      </div>
+    </div>
 
-        <h3>What happened</h3>
-        <ul>
-          <li>The company contacting you is [Company Name]</li>
-          <li>Hackers had access between January 4 and February 11, 2026</li>
-          <li>You're being offered 12 months of free credit monitoring through Experian</li>
-        </ul>
+    <div class="demo-slide" data-slide="lease">
+      <div class="demo-grid">
+        <div class="demo-card doc">
+          <div class="section-lead">WHAT IS SHARED WITH YOU</div>
+          <strong>LEASE RENEWAL ADDENDUM — Section 12.3</strong><br><br>
+          At lessor's sole discretion, monthly rent may be adjusted upon renewal of any term. Notice of adjustment shall be provided no less than thirty (30) days prior to the renewal date. Adjusted rent shall constitute lessee's acceptance unless lessee provides written notice of non-renewal no less than sixty (60) days prior to current term expiration.<br><br>
+          In the event of non-renewal, lessee shall be responsible for any holdover rent at 150% of the then-current monthly rate, prorated daily.
+        </div>
+        <div class="demo-card plainly">
+          <div class="section-lead">WHAT YOU NEED TO KNOW</div>
+          <p><span class="plainly-lead">PLAINLY PUT:</span> Your landlord can raise rent on renewal by any amount — and if you don't say no in writing 60 days before your lease ends, you've automatically agreed.</p>
+          <h3>What happened</h3>
+          <ul>
+            <li>Your landlord can raise rent at renewal — no cap stated</li>
+            <li>They only need to give you 30 days notice of the new amount</li>
+            <li>BUT you need to give 60 days written notice if you want to NOT renew</li>
+            <li>If you overstay even one day, holdover rent is 150% of current rent</li>
+          </ul>
+          <h3>Your options</h3>
+          <ul>
+            <li><strong>Mark your calendar 60+ days before lease end</strong> — that's your only window to opt out</li>
+            <li><strong>Negotiate the renewal rent in writing</strong> before signing — landlords often have flexibility</li>
+            <li><strong>Send a notice of non-renewal now</strong> as a hedge — keeps your options open without committing</li>
+          </ul>
+          <p class="want-to-walk">Want me to draft a notice of non-renewal letter for you to have on hand?</p>
+          <div class="follow-up">↳ "Yes, draft it." → "Here's a letter you can send anytime in your window..."</div>
+        </div>
+      </div>
+    </div>
 
-        <h3>Your options</h3>
-        <ul>
-          <li><strong>Enroll in the free credit monitoring</strong> — covers you for 12 months, then ends</li>
-          <li><strong>Freeze your credit instead</strong> — free at all three bureaus, no expiration, stronger protection. Most experts recommend this when a breach exposes Social Security information.</li>
-        </ul>
+    <div class="demo-slide" data-slide="irs">
+      <div class="demo-grid">
+        <div class="demo-card doc">
+          <div class="section-lead">WHAT IS SHARED WITH YOU</div>
+          <strong>INTERNAL REVENUE SERVICE</strong><br>
+          Notice CP501 · Tax Year 2024<br><br>
+          <strong>You have a balance due</strong><br>
+          Amount: $2,847.13<br>
+          Pay by: 06/15/2026<br><br>
+          You owe $2,847.13 in tax, interest, and penalties for tax year 2024. If you don't pay or make payment arrangements by 06/15/2026, additional penalties and interest will continue to accrue, and the IRS may take collection action including liens or wage garnishment.
+        </div>
+        <div class="demo-card plainly">
+          <div class="section-lead">WHAT YOU NEED TO KNOW</div>
+          <p><span class="plainly-lead">PLAINLY PUT:</span> The IRS says you owe $2,847.13 from your 2024 taxes, due June 15. This is a balance-due notice (CP501) — the first in a series, not an audit.</p>
+          <h3>What happened</h3>
+          <ul>
+            <li>Tax year: 2024</li>
+            <li>Amount owed: $2,847.13 (tax + interest + penalties)</li>
+            <li>Pay-by date: June 15, 2026</li>
+            <li>CP501 is the first notice — escalates to CP503, then CP504 (liens possible)</li>
+          </ul>
+          <h3>Your options</h3>
+          <ul>
+            <li><strong>Pay in full at IRS.gov/Pay</strong> — stops further penalties immediately</li>
+            <li><strong>Set up an installment plan online</strong> — takes 5 minutes, much cheaper than ignoring it</li>
+            <li><strong>Dispute the amount</strong> — call the number on the notice if you think it's wrong; have your return handy</li>
+          </ul>
+          <p class="want-to-walk">Want me to walk you through the installment plan application?</p>
+          <div class="follow-up">↳ "Yes, walk me through it." → "Here are the steps and what each one means..."</div>
+        </div>
+      </div>
+    </div>
 
-        <p class="want-to-walk">Want me to walk you through freezing your credit?</p>
-        <div class="follow-up">↳ "Yes, walk me through it." → "Here's how to do it at each bureau..."</div>
+    <div class="demo-slide" data-slide="nda">
+      <div class="demo-grid">
+        <div class="demo-card doc">
+          <div class="section-lead">WHAT IS SHARED WITH YOU</div>
+          <strong>MUTUAL NON-DISCLOSURE AGREEMENT — Section 4</strong><br><br>
+          Each party agrees that Confidential Information disclosed during the term shall be held in strict confidence for a period of five (5) years following termination of this Agreement.<br><br>
+          Breach of this provision by either party shall entitle the non-breaching party to liquidated damages of $100,000 per occurrence, in addition to any other remedies available at law or equity. Such damages shall apply regardless of whether disclosure was intentional or inadvertent.
+        </div>
+        <div class="demo-card plainly">
+          <div class="section-lead">WHAT YOU NEED TO KNOW</div>
+          <p><span class="plainly-lead">PLAINLY PUT:</span> This NDA is mostly standard — except if you accidentally share confidential info, you owe $100,000 per leak. That's broader than typical.</p>
+          <h3>What happened</h3>
+          <ul>
+            <li>Confidentiality period: 5 years AFTER the agreement ends</li>
+            <li>Liquidated damages: $100,000 per breach, fixed in advance</li>
+            <li>Applies to <strong>accidental</strong> disclosure, not just intentional</li>
+            <li>This is on top of any other remedies they could pursue</li>
+          </ul>
+          <h3>Your options</h3>
+          <ul>
+            <li><strong>Sign as-is</strong> — accept the risk</li>
+            <li><strong>Negotiate the damages clause</strong> — cap total damages, require proof of harm, or exclude unintentional disclosure</li>
+            <li><strong>Negotiate the duration</strong> — 2 to 3 years post-termination is more common than 5</li>
+            <li><strong>Walk away</strong> — for non-critical relationships, this may be too much risk</li>
+          </ul>
+          <p class="want-to-walk">Want me to draft suggested language for negotiating the damages clause?</p>
+          <div class="follow-up">↳ "Yes, draft it." → "Here's the redline language to send back..."</div>
+        </div>
       </div>
     </div>
   </div>
@@ -523,6 +687,17 @@
       formatted = '(' + digits.substring(0, 3) + ') ' + digits.substring(3, 6) + '-' + digits.substring(6);
     }
     e.target.value = formatted;
+  });
+
+  // Demo tab switching
+  document.querySelectorAll('.demo-tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      var slideId = tab.getAttribute('data-slide');
+      document.querySelectorAll('.demo-tab').forEach(function(t) { t.classList.remove('active'); });
+      document.querySelectorAll('.demo-slide').forEach(function(s) { s.classList.remove('active'); });
+      tab.classList.add('active');
+      document.querySelector('.demo-slide[data-slide="' + slideId + '"]').classList.add('active');
+    });
   });
 
   document.getElementById('waitlist-form').addEventListener('submit', async function(e) {
