@@ -35,21 +35,69 @@
       padding: 0 24px;
     }
     /* Header */
-    .header { padding: 40px 0 32px; background: var(--teal); }
+    .header { padding: 28px 0; background: var(--teal); }
+    .header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .brand-block { flex: 0 0 auto; }
     .wordmark {
-      font-size: 36px;
+      font-size: 32px;
       font-weight: 700;
       color: white;
       letter-spacing: -0.02em;
       line-height: 1.1;
     }
     .header .tagline {
-      font-size: 15px;
+      font-size: 14px;
       color: white;
       opacity: 0.78;
       font-style: italic;
-      margin-top: 6px;
+      margin-top: 4px;
     }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      opacity: 0.85;
+      transition: opacity 0.15s;
+    }
+    .nav a:hover { opacity: 1; }
+    .nav-cta {
+      background: var(--coral);
+      color: white !important;
+      padding: 10px 18px;
+      border-radius: 6px;
+      font-weight: 600;
+      opacity: 1 !important;
+      transition: transform 0.15s;
+    }
+    .nav-cta:hover { transform: translateY(-1px); }
+    @media (max-width: 720px) {
+      .header .container { flex-direction: column; align-items: flex-start; }
+      .nav { width: 100%; gap: 18px; }
+    }
+    /* About */
+    .about { padding: 80px 0; }
+    .about-text {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+      color: white;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+    .about-text a { color: white; text-decoration: underline; }
     /* Hero */
     .hero { padding: 60px 0 100px; }
     .hero h1 {
@@ -392,8 +440,16 @@
 
 <header class="header">
   <div class="container">
-    <div class="wordmark">Plainly Put</div>
-    <div class="tagline">Any document, plainly put.</div>
+    <div class="brand-block">
+      <div class="wordmark">Plainly Put</div>
+      <div class="tagline">Any document, plainly put.</div>
+    </div>
+    <nav class="nav">
+      <a href="#demo">What we do</a>
+      <a href="#promises">Our promise</a>
+      <a href="#about">About</a>
+      <a href="#waitlist" class="nav-cta">Get early access</a>
+    </nav>
   </div>
 </header>
 
@@ -405,7 +461,7 @@
   </div>
 </section>
 
-<section class="demo">
+<section class="demo" id="demo">
   <div class="container">
     <h2 class="section-h2">Here is what we will do for you.</h2>
     <p class="section-lead">Upload anything that's confusing you. <br>We'll explain it like a friend who happens to know what they're talking about.</p>
@@ -422,11 +478,18 @@
       <div class="demo-grid">
         <div class="demo-card doc">
           <div class="section-lead">WHAT IS SHARED WITH YOU</div>
-          <strong>NOTICE OF DATA SECURITY INCIDENT</strong><br><br>
+          <strong>NOTICE OF DATA SECURITY INCIDENT</strong><br>
+          Date of Notice: April 12, 2026<br><br>
           Dear Valued Customer,<br><br>
-          [Company Name] is writing to inform you of a data security incident that may have involved your personal information. On February 18, 2026, we discovered that an unauthorized third party gained access to certain systems between January 4, 2026 and February 11, 2026.<br><br>
-          The information that may have been involved includes your name, email address, date of birth, and the last four digits of your Social Security number. We have no evidence that this information has been misused.<br><br>
-          As a precaution, we are offering 12 months of complimentary credit monitoring through Experian. To enroll, visit experian.com/protect and use activation code XX-XX-XXXX by May 30, 2026.
+          [Company Name] is writing to inform you of a data security incident that may have involved your personal information. We take the protection of your information very seriously and are providing this notice as part of our commitment to transparency.<br><br>
+          <strong>WHAT HAPPENED</strong><br>
+          On February 18, 2026, we discovered that an unauthorized third party gained access to certain systems between January 4, 2026 and February 11, 2026. We immediately launched an investigation with leading cybersecurity experts and notified law enforcement.<br><br>
+          <strong>INFORMATION INVOLVED</strong><br>
+          The information that may have been involved includes your name, email address, date of birth, and the last four digits of your Social Security number. We have no evidence at this time that this information has been misused.<br><br>
+          <strong>WHAT WE ARE DOING</strong><br>
+          As a precaution, we are offering 12 months of complimentary credit monitoring through Experian. To enroll, visit experian.com/protect and use activation code XX-XX-XXXX by May 30, 2026.<br><br>
+          <strong>FOR MORE INFORMATION</strong><br>
+          If you have questions, please contact our dedicated support line at 1-800-XXX-XXXX, Monday through Friday, 8am to 8pm ET. You may also have certain rights under applicable state privacy laws.
         </div>
         <div class="demo-card plainly">
           <div class="section-lead">WHAT YOU NEED TO KNOW</div>
@@ -452,16 +515,28 @@
       <div class="demo-grid">
         <div class="demo-card doc">
           <div class="section-lead">WHAT IS SHARED WITH YOU</div>
-          <strong>EXPLANATION OF BENEFITS</strong><br><br>
+          <strong>EXPLANATION OF BENEFITS — Not a Bill</strong><br>
+          Member: [Patient Name]<br>
+          Member ID: ABC1234567890<br>
+          Group #: 0042-XX<br>
+          Claim Number: 2026CLM-X8472K<br>
+          Statement Date: 04/03/2026<br><br>
           Service Date: 03/14/2026<br>
           Provider: Northside Diagnostic Imaging<br>
-          Procedure: CPT 74181 — MRI Abdomen w/o contrast<br><br>
+          Network Status: Out-of-Network<br>
+          Procedure Code: CPT 74181 — MRI Abdomen w/o contrast<br>
+          Diagnosis: R10.84 (Abdominal pain)<br><br>
+          <strong>CHARGE DETAILS</strong><br>
           Amount Billed: $3,247.00<br>
           Plan Discount: −$1,890.00<br>
           Allowed Amount: $1,357.00<br>
+          Deductible Applied: $0.00<br>
           Plan Paid: $0.00<br>
-          <strong>Patient Responsibility: $1,357.00</strong><br><br>
-          Reason Code: PR-204 — This service is not covered under the patient's current benefit plan.
+          Coinsurance/Copay: $0.00<br>
+          <strong>PATIENT RESPONSIBILITY: $1,357.00</strong><br><br>
+          <strong>REASON CODES</strong><br>
+          PR-204 — This service is not covered under the patient's current benefit plan.<br><br>
+          This document is not a bill. You may receive a separate bill from the provider. To dispute, contact Member Services at 1-800-XXX-XXXX.
         </div>
         <div class="demo-card plainly">
           <div class="section-lead">WHAT YOU NEED TO KNOW</div>
@@ -489,9 +564,11 @@
       <div class="demo-grid">
         <div class="demo-card doc">
           <div class="section-lead">WHAT IS SHARED WITH YOU</div>
-          <strong>LEASE RENEWAL ADDENDUM — Section 12.3</strong><br><br>
-          At lessor's sole discretion, monthly rent may be adjusted upon renewal of any term. Notice of adjustment shall be provided no less than thirty (30) days prior to the renewal date. Adjusted rent shall constitute lessee's acceptance unless lessee provides written notice of non-renewal no less than sixty (60) days prior to current term expiration.<br><br>
-          In the event of non-renewal, lessee shall be responsible for any holdover rent at 150% of the then-current monthly rate, prorated daily.
+          <strong>LEASE AGREEMENT — Section 12: Renewal and Termination</strong><br><br>
+          <strong>12.1 Term.</strong> The initial term of this Lease shall commence on [Date] and continue for a period of twelve (12) months thereafter, unless earlier terminated in accordance with the provisions herein.<br><br>
+          <strong>12.2 Automatic Renewal.</strong> This Lease shall renew automatically for successive twelve (12) month terms unless either party provides written notice as set forth in Section 12.3 below.<br><br>
+          <strong>12.3 Rent Adjustment Upon Renewal.</strong> At lessor's sole discretion, monthly rent may be adjusted upon renewal of any term. Notice of any rent adjustment shall be provided to lessee no less than thirty (30) days prior to the renewal date. Adjusted rent shall constitute lessee's acceptance of the renewal terms unless lessee provides written notice of non-renewal no less than sixty (60) days prior to current term expiration, delivered by certified mail.<br><br>
+          <strong>12.4 Holdover.</strong> In the event of non-renewal and continued occupancy by lessee beyond the term expiration date, lessee shall be responsible for any holdover rent at one hundred fifty percent (150%) of the then-current monthly rate, prorated daily. Lessor reserves all rights to commence eviction proceedings.
         </div>
         <div class="demo-card plainly">
           <div class="section-lead">WHAT YOU NEED TO KNOW</div>
@@ -520,11 +597,25 @@
         <div class="demo-card doc">
           <div class="section-lead">WHAT IS SHARED WITH YOU</div>
           <strong>INTERNAL REVENUE SERVICE</strong><br>
-          Notice CP501 · Tax Year 2024<br><br>
-          <strong>You have a balance due</strong><br>
-          Amount: $2,847.13<br>
-          Pay by: 06/15/2026<br><br>
-          You owe $2,847.13 in tax, interest, and penalties for tax year 2024. If you don't pay or make payment arrangements by 06/15/2026, additional penalties and interest will continue to accrue, and the IRS may take collection action including liens or wage garnishment.
+          Department of the Treasury<br>
+          P.O. Box 802501, Cincinnati, OH 45280-2501<br><br>
+          Notice: CP501<br>
+          Notice Date: April 28, 2026<br>
+          Tax Year: 2024<br>
+          Taxpayer ID: XXX-XX-1234<br>
+          To Contact Us: 1-800-829-1040<br>
+          Page: 1 of 2<br><br>
+          [Taxpayer Name]<br>
+          [Address]<br><br>
+          <strong>You have a balance due</strong><br><br>
+          Total amount due by June 15, 2026: <strong>$2,847.13</strong><br>
+          &nbsp;&nbsp;Tax: $2,543.00<br>
+          &nbsp;&nbsp;Interest charged: $187.42<br>
+          &nbsp;&nbsp;Late payment penalty: $116.71<br><br>
+          You owe $2,847.13 in tax, interest, and penalties for tax year 2024. This is a reminder that you have a balance on your account.<br><br>
+          <strong>WHAT YOU NEED TO DO</strong><br>
+          Pay your balance immediately. If you can't pay the full amount, set up a payment plan online at IRS.gov/payments.<br><br>
+          If you don't pay or make payment arrangements by June 15, 2026, additional penalties and interest will continue to accrue. The IRS may also take collection action, including filing a Notice of Federal Tax Lien or levying your wages, bank account, or other assets.
         </div>
         <div class="demo-card plainly">
           <div class="section-lead">WHAT YOU NEED TO KNOW</div>
@@ -552,9 +643,15 @@
       <div class="demo-grid">
         <div class="demo-card doc">
           <div class="section-lead">WHAT IS SHARED WITH YOU</div>
-          <strong>MUTUAL NON-DISCLOSURE AGREEMENT — Section 4</strong><br><br>
+          <strong>MUTUAL NON-DISCLOSURE AGREEMENT</strong><br><br>
+          This Mutual Non-Disclosure Agreement ("Agreement") is entered into as of [Date] by and between [Party A] and [Party B] (each, a "Party" and collectively, the "Parties").<br><br>
+          <strong>Section 3. Definition of Confidential Information.</strong><br>
+          "Confidential Information" shall mean any and all non-public information disclosed by one Party to the other, in any form, whether oral, written, electronic, or visual, including but not limited to business plans, customer lists, financial data, technical specifications, source code, trade secrets, and any derivatives thereof.<br><br>
+          <strong>Section 4. Obligations of Confidentiality and Liquidated Damages.</strong><br>
           Each party agrees that Confidential Information disclosed during the term shall be held in strict confidence for a period of five (5) years following termination of this Agreement.<br><br>
-          Breach of this provision by either party shall entitle the non-breaching party to liquidated damages of $100,000 per occurrence, in addition to any other remedies available at law or equity. Such damages shall apply regardless of whether disclosure was intentional or inadvertent.
+          Breach of this provision by either party shall entitle the non-breaching party to liquidated damages of $100,000 per occurrence, in addition to any other remedies available at law or equity. Such damages shall apply regardless of whether disclosure was intentional or inadvertent.<br><br>
+          <strong>Section 5. Permitted Disclosures.</strong><br>
+          The obligations set forth in Section 4 shall not apply to information that: (a) is or becomes publicly available through no breach of this Agreement; (b) was rightfully known by the receiving Party prior to disclosure; or (c) is required to be disclosed by law or court order.
         </div>
         <div class="demo-card plainly">
           <div class="section-lead">WHAT YOU NEED TO KNOW</div>
@@ -581,7 +678,7 @@
   </div>
 </section>
 
-<section class="promises">
+<section class="promises" id="promises">
   <div class="container">
     <h2 class="section-h22">Your data is yours. Full stop.</h2>
     <p class="section-lead2">No fine print on this page. Here is exactly what we will and won't do.</p>
@@ -615,6 +712,13 @@
         <p>Raw uploads auto-delete after 90 days unless you pin them. Your call, not ours.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="container">
+    <h2 class="section-h22">Why this exists.</h2>
+    <p class="about-text">Plainly Put was built because everyone deserves to understand what they're signing, paying for, or being told to do. The team is small. The mission is simple: any document, plainly put. Your data stays yours, always. Email us anytime at <a href="mailto:hello@plainlyput.ai">hello@plainlyput.ai</a>.</p>
   </div>
 </section>
 
